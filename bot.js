@@ -32,7 +32,7 @@ function postMessage(request) {
 	var botResponse, options, body, botReq;
 	
 	if (/\!help/i.test(request)){
-		botResponse = "!help shows this message\n!roll generates a number between 1 and 10\n!yesno generates yes, no, or maybe\n!doggopls shows a random picture of a doggo from a predefined list"
+		botResponse = "!help shows this message\n!roll generates a number between 1 and 10\n!yesno generates yes, no, or maybe\n!doggopls shows a random picture of a doggo from a predefined list";
 	}else if (/\!roll/i.test(request)){
 		var x = Math.floor((Math.random() * 10) + 1);
 		botResponse = x.toString();
