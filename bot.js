@@ -32,7 +32,7 @@ function postMessage(request) {
 	var botResponse, options, body, botReq;
 	
 	if (/\!help/i.test(request)){
-		botResponse = "add a ' ! ' in front of these phrases:\nhelp shows this message\nroll generates a number between 1 and 10\nyesno generates yes, no, or maybe\ndoggopls shows a random picture of a doggo from a predefined list";
+		botResponse = "add a ' ! ' in front of these phrases:\nhelp: shows this message\nroll: generates a number between 1 and 10\nyesno: generates yes, no, or maybe\ndoggopls: shows a random picture of a doggo from a predefined list";
 	}else if (/\!roll/i.test(request)){
 		var x = Math.floor((Math.random() * 10) + 1);
 		botResponse = x.toString();
