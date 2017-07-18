@@ -5,12 +5,18 @@ var botID = process.env.BOT_ID;
 //inputs
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
+	botRegexHelp = /\!help/i;
 	botRegexRoll = /\!roll/i;
 	botRegexYesno = /\!yesno/i;
 	botRegexQYes = /is kyle gay\?|is erica rich\?|is jayjay cool\?/i;
 	botRegexDoggopls = /\!doggopls/i;
 
-  if(request.text && (botRegexRoll.test(request.text) || botRegexYesno.test(request.text)|| botRegexQYes.test(request.text) || botRegexDoggopls.test(request.text))) {
+  if(request.text && (botRegexRoll.test(request.text) 
+		|| botRegexYesno.test(request.text)
+		|| botRegexQYes.test(request.text) 
+		|| botRegexDoggopls.test(request.text)
+		|| botRegexHelp.test(request.text)
+		)) {
 	this.res.writeHead(200);
     postMessage(request.text);
     this.res.end();
@@ -25,7 +31,9 @@ function respond() {
 function postMessage(request) {
 	var botResponse, options, body, botReq;
 	
-	if (/\!roll/i.test(request)){
+	if (/\!help/i.test(request)){
+		botResponse = "!roll generates a number between 1 and 10\n!yesno generates yes, no, or maybe\n!doggopls shows a random picture of a doggo from a predefined list";
+	}else if (/\!roll/i.test(request)){
 		var x = Math.floor((Math.random() * 10) + 1);
 		botResponse = x.toString();
 	}else if (/\!yesno/i.test(request)){
@@ -145,7 +153,7 @@ function postMessage(request) {
 		} else if (x == 49) {
 			botResponse = "http://i.imgur.com/AeQuyyc.png";
 		} else if (x == 50) {
-			botResponse = "http://i.imgur.com/saQt83A.jpg";
+			botResponse = "http://i.imgur.com/I9gNxh5.jpg";
 		}
 	}
 
