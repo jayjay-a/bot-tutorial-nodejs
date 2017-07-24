@@ -47,7 +47,6 @@ function postMessage(request) {
 		}
 	}else if (/is kyle gay\?|is erica rich\?|is jayjay cool\?/i.test(request)){
 		botResponse = "yes";
-   
 	}else if (/\!doggopls/i.test(request)){
 		var x = Math.floor(Math.random() * 50);
 		var doggos = [
