@@ -49,7 +49,7 @@ function postMessage(request) {
 		botResponse = "yes";
    
 	}else if (/\!doggopls/i.test(request)){
-		var x = Math.floor((Math.random() * 50) + 1);
+		var x = Math.floor(Math.random() * 50);
 		var doggos = [
 			"http://i.imgur.com/xyPtn4m.jpg",
 			"http://i.imgur.com/JR6noxf.jpg",
