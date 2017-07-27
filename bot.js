@@ -1,55 +1,7 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
 var botID = process.env.BOT_ID;
-
-//inputs
-function respond() {
-  var request = JSON.parse(this.req.chunks[0]),
-	botRegexHelp = /\!help/i;
-	botRegexRoll = /\!roll/i;
-	botRegexYesno = /\!yesno/i;
-	botRegexQYes = /is kyle gay\?|is erica rich\?|is jayjay cool\?/i;
-	botRegexDoggopls = /\!doggopls/i;
-
-  if(request.text && (botRegexRoll.test(request.text) 
-		|| botRegexYesno.test(request.text)
-		|| botRegexQYes.test(request.text) 
-		|| botRegexDoggopls.test(request.text)
-		|| botRegexHelp.test(request.text)
-		)) {
-	this.res.writeHead(200);
-    postMessage(request.text);
-    this.res.end();
-  }else {
-    console.log("don't care");
-    this.res.writeHead(200);
-    this.res.end();
-  }
-}
-
-//reponse
-function postMessage(request) {
-	var botResponse, options, body, botReq;
-	
-	if (/\!help/i.test(request)){
-		botResponse = "add a ' ! ' in front of these phrases:\nhelp: shows this message\nroll: generates a number between 1 and 10\nyesno: generates yes, no, or maybe\ndoggopls: shows a random picture of a doggo from a predefined list";
-	}else if (/\!roll/i.test(request)){
-		var x = Math.floor((Math.random() * 10) + 1);
-		botResponse = x.toString();
-	}else if (/\!yesno/i.test(request)){
-		var x = Math.floor((Math.random() * 3) + 1);
-		if (x == 1) {
-			botResponse = "yes";
-		} else if (x == 2) {
-			botResponse = "no";
-		} else if (x == 3) {
-			botResponse = "maybe";
-		}
-	}else if (/is kyle gay\?|is erica rich\?|is jayjay cool\?/i.test(request)){
-		botResponse = "yes";
-	}else if (/\!doggopls/i.test(request)){
-		var x = Math.floor(Math.random() * 50);
-		var doggos = [
+var doggos = [
 			"http://i.imgur.com/xyPtn4m.jpg",
 			"http://i.imgur.com/JR6noxf.jpg",
 			"http://i.imgur.com/RZrxsVG.jpg",
@@ -103,6 +55,52 @@ function postMessage(request) {
 			"http://i.imgur.com/AeQuyyc.png",
 			"http://i.imgur.com/4toW76Z.jpg"
 		];
+
+//inputs
+function respond() {
+  var request = JSON.parse(this.req.chunks[0]),
+	botRegexHelp = /\!help/i;
+	botRegexRoll = /\!roll/i;
+	botRegexYesno = /\!yesno/i;
+	botRegexQYes = /is kyle gay\?|is erica rich\?|is jayjay cool\?/i;
+	botRegexDoggopls = /\!doggopls/i;
+
+  if(request.text && (botRegexRoll.test(request.text) 
+		|| botRegexYesno.test(request.text)
+		|| botRegexQYes.test(request.text) 
+		|| botRegexDoggopls.test(request.text)
+		|| botRegexHelp.test(request.text)
+		)) {
+	this.res.writeHead(200);
+    postMessage(request.text);
+    this.res.end();
+  }else {
+    console.log("don't care");
+    this.res.writeHead(200);
+    this.res.end();
+  }
+}
+
+//reponse
+function postMessage(request) {
+	var botResponse, options, body, botReq;
+	
+	if (/\!help/i.test(request)){
+		botResponse = "add a ' ! ' in front of these phrases:\nhelp: shows this message\nroll: generates a number between 1 and 10\nyesno: generates yes, no, or maybe\ndoggopls: shows a random picture of a doggo from a predefined list";
+	}else if (/\!roll/i.test(request)){
+		var x = Math.floor((Math.random() * 10) + 1);
+		botResponse = x.toString();
+	}else if (/\!yesno/i.test(request)){
+		var x = Math.floor((Math.random() * 2) + 1);
+		if (x == 1) {
+			botResponse = "yes";
+		} else if (x == 2) {
+			botResponse = "no";
+		}
+	}else if (/is kyle gay\?|is erica rich\?|is jayjay cool\?/i.test(request)){
+		botResponse = "yes";
+	}else if (/\!doggopls/i.test(request)){
+		var x = Math.floor(Math.random() * 50);
 		botResponse = doggos[x];
 	}
 
