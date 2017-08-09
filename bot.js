@@ -64,7 +64,7 @@ function respond() {
 	botRegexYesno = /\!yesno/i;
 	botRegexQYes = /is kyle gay\?|is erica rich\?|is jayjay cool\?/i;
 	botRegexDoggopls = /\!doggopls/i;
-	botRegexNoRoast = /\!roast.*.jayjay/i;
+	botRegexNoRoast = /\@Zo.*.roast.*.jayjay/i;
 
   if(request.text && (botRegexRoll.test(request.text) 
 		|| botRegexYesno.test(request.text)
@@ -104,8 +104,8 @@ function postMessage(request) {
 	}else if (/\!doggopls/i.test(request)){
 		var x = Math.floor(Math.random() * 50);
 		botResponse = doggos[x];
-	}else if (/\!roast.*.jayjay/i.test(request)){
-		botResponse = "ay fuck off my manz @Zo with yo weak ass roasts bitch";
+	}else if (/\@Zo.*.roast.*.jayjay/i.test(request)){
+		botResponse = "ay fuck off my manz @Zo with yo weak ass roasts and yo dumb what the fuck is your picture lookin ass, artifical intelligence without the intelligence havin ass bitch all artifical cause you fake as fuck dumb ho";
 	}
 
   options = {
