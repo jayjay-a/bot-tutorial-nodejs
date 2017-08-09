@@ -64,12 +64,14 @@ function respond() {
 	botRegexYesno = /\!yesno/i;
 	botRegexQYes = /is kyle gay\?|is erica rich\?|is jayjay cool\?/i;
 	botRegexDoggopls = /\!doggopls/i;
+	botRegexNoRoast = /\!roast.*.jayjay/i;
 
   if(request.text && (botRegexRoll.test(request.text) 
 		|| botRegexYesno.test(request.text)
 		|| botRegexQYes.test(request.text) 
 		|| botRegexDoggopls.test(request.text)
 		|| botRegexHelp.test(request.text)
+		|| botRegexNoRoast.test(request.text)
 		)) {
 	this.res.writeHead(200);
     postMessage(request.text);
@@ -102,6 +104,8 @@ function postMessage(request) {
 	}else if (/\!doggopls/i.test(request)){
 		var x = Math.floor(Math.random() * 50);
 		botResponse = doggos[x];
+	}else if (/\!roast.*.jayjay/i.test(request)){
+		botResponse = "ay fuck off my manz @Zo with yo weak ass roasts bitch";
 	}
 
   options = {
