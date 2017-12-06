@@ -64,11 +64,13 @@ function respond() {
 	botRegexYesno = /\!yesno/i;
 	botRegexQYes = /is kyle gay\?|is erica rich\?|is jayjay cool\?/i;
 	botRegexDoggopls = /\!doggopls/i;
+	botRegexHappyBirthday = /happy birthday/i;
 
   if(request.text && (botRegexRoll.test(request.text) 
 		|| botRegexYesno.test(request.text)
 		|| botRegexQYes.test(request.text) 
 		|| botRegexDoggopls.test(request.text)
+		|| botRegexHappyBirthday.test(request.text)
 		|| botRegexHelp.test(request.text)
 		)) {
 	this.res.writeHead(200);
@@ -102,6 +104,8 @@ function postMessage(request) {
 	}else if (/\!doggopls/i.test(request)){
 		var x = Math.floor(Math.random() * 50);
 		botResponse = doggos[x];
+	}else if (/happy birthday/i.test(request)){
+		botResponse = "Thank you!!!!!!! (-:";
 	}
   options = {
     hostname: 'api.groupme.com',
