@@ -105,7 +105,7 @@ function postMessage(request) {
 		var x = Math.floor(Math.random() * 50);
 		botResponse = doggos[x];
 	}else if (/happy birthday/i.test(request)){
-		botResponse = "Thank you!!!!!!! (-:";
+		botResponse = "jayjay says thank you!!!!!!! (-:";
 	}
   options = {
     hostname: 'api.groupme.com',
